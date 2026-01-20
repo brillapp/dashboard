@@ -1,34 +1,58 @@
-const CACHE = "farmacias-offline-v5";
-const ASSETS = ["./", "./index.html", "./app.js", "./manifest.json", "./sw.js"];
+/* sw.js — cache básico para offline */
+const CACHE_NAME = "farmacias-offline-v1";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./styles.css",
+  "./app.js",
+  "./manifest.json",
+];
 
-self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+  );
   self.skipWaiting();
 });
 
-self.addEventListener("activate", (e) => {
-  e.waitUntil(
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.map((k) => (k === CACHE ? null : caches.delete(k))))
+      Promise.all(keys.map((k) => (k !== CACHE_NAME ? caches.delete(k) : null)))
     )
   );
   self.clients.claim();
 });
 
-self.addEventListener("fetch", (e) => {
-  const req = e.request;
-  e.respondWith(
+self.addEventListener("fetch", (event) => {
+  const req = event.request;
+
+  // Solo GET
+  if (req.method !== "GET") return;
+
+  event.respondWith(
     caches.match(req).then((cached) => {
-      return (
-        cached ||
-        fetch(req).then((res) => {
-          if (req.method === "GET" && res.ok) {
+      // cache-first para app shell
+      if (cached) return cached;
+
+      return fetch(req)
+        .then((res) => {
+          // guarda en cache si es same-origin
+          const url = new URL(req.url);
+          if (url.origin === self.location.origin) {
             const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy));
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
           }
           return res;
-        }).catch(() => cached)
-      );
+        })
+        .catch(() => {
+          // fallback a index para navegación
+          if (req.headers.get("accept")?.includes("text/html")) {
+            return caches.match("./index.html");
+          }
+          return cached;
+        });
     })
   );
 });
+

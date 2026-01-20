@@ -1,11 +1,12 @@
 {
-    "name": "Ventas Offline",
-    "short_name": "Ventas",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#0b1220",
-    "theme_color": "#111827",
-    "icons": []
-  }
+  "name": "Farmacias · Ventas Offline",
+  "short_name": "Farmacias",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0f172a",
+  "icons": []
+}
+
   
   
