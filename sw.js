@@ -1,4 +1,4 @@
-const CACHE = "ventas-offline-v3";
+const CACHE = "farmacias-offline-v4";
 const ASSETS = ["./", "./index.html", "./app.js", "./manifest.json", "./sw.js"];
 
 self.addEventListener("install", (e) => {
@@ -32,4 +32,3 @@ self.addEventListener("fetch", (e) => {
     })
   );
 });
-
