@@ -1,4 +1,4 @@
-const CACHE = "farmacias-offline-v4";
+const CACHE = "farmacias-offline-v5";
 const ASSETS = ["./", "./index.html", "./app.js", "./manifest.json", "./sw.js"];
 
 self.addEventListener("install", (e) => {

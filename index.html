@@ -51,11 +51,9 @@
       border:1px solid var(--b);padding:10px 12px;border-radius:999px;font-size:12px;display:none;z-index:20}
     .banner{border:1px solid rgba(245,158,11,.35);background:rgba(245,158,11,.10);border-radius:16px;padding:10px;margin-bottom:12px}
     .mini{font-size:11px;color:var(--muted)}
-    .stop{border:1px solid var(--b);border-radius:16px;padding:10px;background:rgba(255,255,255,.02)}
-    .stop.done{opacity:.55}
     .btn-xs{padding:6px 8px;border-radius:10px;font-size:12px}
     .helpbox{margin-top:10px;border:1px dashed rgba(148,163,184,.35);border-radius:14px;padding:10px;background:rgba(148,163,184,.06)}
-    dialog{border:1px solid var(--b);background:rgba(2,6,23,.98);color:var(--fg);border-radius:16px;padding:0;max-width:780px;width:calc(100% - 30px)}
+    dialog{border:1px solid var(--b);background:rgba(2,6,23,.98);color:var(--fg);border-radius:16px;padding:0;max-width:900px;width:calc(100% - 30px)}
     dialog::backdrop{background:rgba(0,0,0,.55)}
     .dlg-head{padding:12px 12px 0 12px}
     .dlg-body{padding:12px}
@@ -90,125 +88,25 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Check-in dialog -->
-<dialog id="checkinDlg">
+<!-- Modal: Check-in -->
+<dialog id="checkinDlg"></dialog>
+
+<!-- Modal: Detalles farmacia -->
+<dialog id="pharmacyDlg">
   <div class="dlg-head">
     <div class="row">
       <div>
-        <b id="ciTitle">Check-in</b><br>
-        <span class="mini" id="ciSubtitle"></span>
+        <b id="phTitle">Detalles farmacia</b><br>
+        <span class="mini" id="phSubtitle"></span>
       </div>
       <div class="right">
-        <button class="btn" id="ciClose">Cerrar</button>
+        <button class="btn" id="phClose">Cerrar</button>
       </div>
     </div>
   </div>
-  <div class="dlg-body">
-    <form id="ciForm">
-      <input type="hidden" name="clienteId">
-      <input type="hidden" name="routeStopId">
-
-      <div class="grid two">
-        <div>
-          <label>Fecha</label>
-          <input type="date" name="fecha" required
-                 placeholder="Selecciona la fecha del contacto"
-                 data-help="Fecha del contacto (visita/llamada). Por defecto hoy. Útil para seguimiento y predicciones." />
-        </div>
-        <div>
-          <label>Tipo</label>
-          <select name="tipo" data-help="Tipo de interacción con la farmacia (visita, llamada, WhatsApp, email).">
-            <option value="visita">visita</option>
-            <option value="llamada">llamada</option>
-            <option value="whatsapp">whatsapp</option>
-            <option value="email">email</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid two">
-        <div>
-          <label>Resultado</label>
-          <select name="resultado" data-help="Resultado del contacto. Sirve para priorizar y ver qué quedó pendiente.">
-            <option value="ok">ok</option>
-            <option value="pendiente">pendiente</option>
-            <option value="sin_respuesta">sin respuesta</option>
-          </select>
-        </div>
-        <div>
-          <label>Próxima acción (opcional)</label>
-          <input name="proximaAccion"
-                 placeholder="Ej: enviar muestra / llamar el martes"
-                 data-help="Anota el siguiente paso. En Predicciones aparecerá como pendiente para no olvidarlo." />
-        </div>
-      </div>
-
-      <label>Notas</label>
-      <textarea name="notas" placeholder="Necesidades, objeciones, acuerdos..."
-                data-help="Notas de valor: necesidades detectadas, objeciones, acuerdos, condiciones, competencia, etc."></textarea>
-
-      <div class="grid two">
-        <div>
-          <label>¿Crear pedido ahora?</label>
-          <select name="crearPedido" data-help="Si la farmacia te confirma un pedido durante la visita, actívalo y registra el pedido en el momento.">
-            <option value="no">no</option>
-            <option value="si">sí</option>
-          </select>
-        </div>
-        <div>
-          <label>Importe rápido (opcional)</label>
-          <input name="importeRapido" type="number" step="0.01" min="0"
-                 placeholder="Ej: 250"
-                 data-help="Si no creas pedido, puedes guardar un importe aproximado para seguimiento (no cuenta como pedido real)."/>
-        </div>
-      </div>
-
-      <div id="ciPedidoBox" style="display:none;">
-        <div class="hr"></div>
-        <div class="row">
-          <b>Pedido rápido</b>
-          <span class="mini">Añade líneas; el total se calcula solo.</span>
-        </div>
-        <div class="grid two">
-          <div>
-            <label>Estado pedido</label>
-            <select name="estadoPedido" data-help="Estado del pedido. Normalmente confirmado o entregado si ya está cerrado.">
-              <option value="confirmado">confirmado</option>
-              <option value="entregado">entregado</option>
-              <option value="borrador">borrador</option>
-            </select>
-          </div>
-          <div>
-            <label>Canal</label>
-            <select name="canalPedido" data-help="Cómo se cerró el pedido. Útil para analizar qué canal convierte mejor.">
-              <option value="visita">visita</option>
-              <option value="telefono">teléfono</option>
-              <option value="whatsapp">whatsapp</option>
-              <option value="email">email</option>
-              <option value="otro">otro</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="hr"></div>
-        <div class="row">
-          <button class="btn-primary btn-xs" type="button" id="ciAddLinea">+ Línea</button>
-          <span class="pill" id="ciTotalPedido">Total: 0,00 €</span>
-        </div>
-        <div id="ciLineas"></div>
-      </div>
-
-      <div class="helpbox mini" id="ciHelp">Toca un campo para ver una ayuda rápida.</div>
-
-      <div class="hr"></div>
-      <div class="flex">
-        <button class="btn-primary" type="submit">Guardar check-in</button>
-        <button class="btn" type="button" id="ciOnlyVisit">Solo interacción</button>
-      </div>
-    </form>
-  </div>
+  <div class="dlg-body" id="phBody"></div>
   <div class="dlg-foot">
-    <div class="mini">Todo se guarda offline en el dispositivo.</div>
+    <div class="mini">Todo se calcula y guarda offline.</div>
   </div>
 </dialog>
 
