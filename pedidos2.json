@@ -1,0 +1,114 @@
+[
+  {
+    "cliente": "SASTRE ASTOKIZA IDOIA",
+    "estado": "Confirmado",
+    "elementos": 41,
+    "fecha": "2026-01-23",
+    "total_eur": 677.55
+  },
+  {
+    "cliente": "OPTICA Y AUDIOLOGIA MARTINEZ SL",
+    "estado": "Confirmado",
+    "elementos": 30,
+    "fecha": "2026-01-23",
+    "total_eur": 351.00
+  },
+  {
+    "cliente": "ILOVEAPOTECA SL",
+    "estado": "Confirmado",
+    "elementos": 428,
+    "fecha": "2026-01-23",
+    "total_eur": 5126.95
+  },
+  {
+    "cliente": "LOPEZ VIETEZ AMIL",
+    "estado": "Confirmado",
+    "elementos": 261,
+    "fecha": "2026-01-23",
+    "total_eur": 3133.85
+  },
+  {
+    "cliente": "FARGALAT SL",
+    "estado": "Confirmado",
+    "elementos": 246,
+    "fecha": "2026-01-23",
+    "total_eur": 2875.65
+  },
+  {
+    "cliente": "VALDES VALANDRO",
+    "estado": "Confirmado",
+    "elementos": 422,
+    "fecha": "2026-01-22",
+    "total_eur": 4789.15
+  },
+  {
+    "cliente": "BOTICAS RURAIS DE GALICIA S.L.",
+    "estado": "Confirmado",
+    "elementos": 60,
+    "fecha": "2026-01-22",
+    "total_eur": 743.55
+  },
+  {
+    "cliente": "FARGALAT SL",
+    "estado": "Confirmado",
+    "elementos": 246,
+    "fecha": "2026-01-23",
+    "total_eur": 2875.65
+  },
+  {
+    "cliente": "LOPEZ VIETEZ AMIL",
+    "estado": "Confirmado",
+    "elementos": 261,
+    "fecha": "2026-01-23",
+    "total_eur": 3133.85
+  },
+  {
+    "cliente": "ILOVEAPOTECA SL",
+    "estado": "Confirmado",
+    "elementos": 428,
+    "fecha": "2026-01-23",
+    "total_eur": 5126.95
+  },
+  {
+    "cliente": "OPTICA Y AUDIOLOGIA MARTINEZ SL",
+    "estado": "Confirmado",
+    "elementos": 30,
+    "fecha": "2026-01-23",
+    "total_eur": 351.00
+  },
+  {
+    "cliente": "SASTRE ASTOKIZA IDOIA",
+    "estado": "Confirmado",
+    "elementos": 41,
+    "fecha": "2026-01-23",
+    "total_eur": 677.55
+  },
+  {
+    "cliente": "FARGALAT SL",
+    "estado": "Confirmado",
+    "elementos": 246,
+    "fecha": "2026-01-23",
+    "total_eur": 2875.65
+  },
+  {
+    "cliente": "LOPEZ VIETEZ AMIL",
+    "estado": "Confirmado",
+    "elementos": 261,
+    "fecha": "2026-01-23",
+    "total_eur": 3133.85
+  },
+  {
+    "cliente": "ILOVEAPOTECA SL",
+    "estado": "Confirmado",
+    "elementos": 428,
+    "fecha": "2026-01-23",
+    "total_eur": 5126.95
+  },
+  {
+    "cliente": "OPTICA Y AUDIOLOGIA MARTINEZ SL",
+    "estado": "Confirmado",
+    "elementos": 30,
+    "fecha": "2026-01-23",
+    "total_eur": 351.00
+  }
+]
