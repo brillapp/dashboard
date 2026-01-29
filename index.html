@@ -8,10 +8,10 @@
   <link rel="manifest" href="./manifest.json" />
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- iOS -->
+  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Farmacias" />
+  <meta name="apple-mobile-web-app-title" content="Ventas" />
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -20,8 +20,8 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <div class="brand-title">Farmacias · Ventas</div>
-        <div class="brand-sub">Instalable · Offline</div>
+        <div class="brand-title">Ventas · Offline</div>
+        <div class="brand-sub">Instalable · IndexedDB · PWA</div>
       </div>
 
       <div class="topbar-actions">
@@ -34,11 +34,19 @@
   <nav class="tabs" id="tabs">
     <button class="tab active" data-view="dash">Dashboard</button>
     <button class="tab" data-view="predicciones">Predicciones</button>
+
     <button class="tab" data-view="farmacias">Farmacias</button>
+    <button class="tab" data-view="misfarmacias">Mis farmacias</button>
+
+    <button class="tab" data-view="opticas">Ópticas</button>
+    <button class="tab" data-view="misopticas">Mis ópticas</button>
+
     <button class="tab" data-view="pedidos">Pedidos</button>
     <button class="tab" data-view="productos">Productos</button>
+
     <button class="tab" data-view="rutas">Rutas</button>
-    <button class="tab" data-view="checkins">Check-ins</button>
+    <button class="tab" data-view="visitas">Visitas</button>
+
     <button class="tab" data-view="backup">Backup</button>
     <button class="tab" data-view="ajustes">Ajustes</button>
   </nav>
@@ -49,18 +57,34 @@
 
   <div id="toast" class="toast" style="display:none"></div>
 
-  <dialog id="dlg">
+  <!-- Dialog principal -->
+  <dialog id="dlgMain">
     <div class="dlg-head">
       <div class="row">
         <div>
-          <b id="dlgTitle">Detalles</b><br>
-          <span class="mini muted" id="dlgSub"></span>
+          <b id="dlgMainTitle">Detalles</b><br>
+          <span class="mini muted" id="dlgMainSub"></span>
         </div>
-        <button class="btn btn-xs" id="dlgClose">Cerrar</button>
+        <button class="btn btn-xs" id="dlgMainClose">Cerrar</button>
       </div>
     </div>
-    <div class="dlg-body" id="dlgBody"></div>
-    <div class="dlg-foot" id="dlgFoot"></div>
+    <div class="dlg-body" id="dlgMainBody"></div>
+    <div class="dlg-foot" id="dlgMainFoot"></div>
+  </dialog>
+
+  <!-- Dialog secundario (para editor de líneas / subformularios) -->
+  <dialog id="dlgSub">
+    <div class="dlg-head">
+      <div class="row">
+        <div>
+          <b id="dlgSubTitle">Editar</b><br>
+          <span class="mini muted" id="dlgSubSub"></span>
+        </div>
+        <button class="btn btn-xs" id="dlgSubClose">Cerrar</button>
+      </div>
+    </div>
+    <div class="dlg-body" id="dlgSubBody"></div>
+    <div class="dlg-foot" id="dlgSubFoot"></div>
   </dialog>
 
   <script src="./app.js"></script>
