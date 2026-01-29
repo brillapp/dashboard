@@ -1004,7 +1004,7 @@
       <div class="card">
         <div class="row">
           <div>
-            <h2>Farmacias · Catálogo</h2>
+            <h2>Farmacias · Catálogo (${catalogo.length})</h2>
             <div class="mini muted">Añade a Mis farmacias desde aquí.</div>
           </div>
           <div class="right flex">
