@@ -207,12 +207,19 @@
    * Business rules
    **********************/
   function normalizeEstado(s) {
-    const t = String(s || "").toLowerCase().trim();
-    if (t.includes("confirm")) return "confirmado";
-    if (t.includes("export")) return "confirmado";
-    if (t.includes("enviado")) return "confirmado";
-    return "confirmado";
-  }
+  const t = String(s || "").toLowerCase().trim();
+
+  if (!t) return "confirmado";
+
+  if (t.includes("borrador") || t.includes("draft") || t.includes("pend")) return "borrador";
+  if (t.includes("cancel") || t.includes("anul")) return "borrador"; // o "cancelado" si quieres otro estado
+
+  // lo que tú consideras venta válida
+  if (t.includes("confirm") || t.includes("export") || t.includes("enviado")) return "confirmado";
+
+  // fallback conservador
+  return "confirmado";
+}
 
   function pedidoTotal(p) {
     return Number(p.total || 0);
@@ -2179,7 +2186,7 @@
           </div>
           <div>
             <label>Total (calculado)</label>
-            <input disabled value="${escapeAttr(fmtEur(p.total || 0))}" />
+            <input id="oTotalCalc" disabled value="${escapeAttr(fmtEur(p.total || 0))}" />
           </div>
         </div>
 
@@ -2221,6 +2228,9 @@
       // actualizar total (input disabled)
       const totalInput = $$("input[disabled]", $("#dlgBody")).find((x) => (x.value || "").includes("€"));
       // (no lo tocamos, es informativo)
+      const totalEl = $("#oTotalCalc");
+      if (totalEl) totalEl.value = fmtEur(p.total || 0);
+
     }
 
     renderLines();
@@ -2555,6 +2565,7 @@
   (async () => {
     db = await openDB();
     await seedIfEmpty();
+    await ensureProductoGeneral();
 
     wireTabs();
     wireDialogClose();
