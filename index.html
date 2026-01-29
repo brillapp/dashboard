@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Farmacias · Ventas Offline</title>
+
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Farmacias" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-title">Farmacias · Ventas</div>
+        <div class="brand-sub">Instalable · Offline</div>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="btn btn-xs" id="btnInstall" style="display:none">Instalar</button>
+        <button class="btn btn-xs" id="btnHome" title="Dashboard">🏠</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-view="dash">Dashboard</button>
+    <button class="tab" data-view="predicciones">Predicciones</button>
+
+    <button class="tab" data-view="farmacias">Farmacias</button>
+    <button class="tab" data-view="misFarmacias">Mis farmacias</button>
+
+    <button class="tab" data-view="opticas">Ópticas</button>
+    <button class="tab" data-view="misOpticas">Mis ópticas</button>
+
+    <button class="tab" data-view="pedidos">Pedidos</button>
+    <button class="tab" data-view="productos">Productos</button>
+    <button class="tab" data-view="rutas">Rutas</button>
+
+    <button class="tab" data-view="visitas">Visitas</button>
+
+    <button class="tab" data-view="backup">Backup</button>
+    <button class="tab" data-view="ajustes">Ajustes</button>
+  </nav>
+
+  <main class="container">
+    <div id="view"></div>
+  </main>
+
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <dialog id="dlg">
+    <div class="dlg-head">
+      <div class="row">
+        <div>
+          <b id="dlgTitle">Detalles</b><br>
+          <span class="mini muted" id="dlgSub"></span>
+        </div>
+        <button class="btn btn-xs" id="dlgClose">Cerrar</button>
+      </div>
+    </div>
+    <div class="dlg-body" id="dlgBody"></div>
+    <div class="dlg-foot" id="dlgFoot"></div>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>
