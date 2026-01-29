@@ -379,7 +379,7 @@
     try { obj = JSON.parse(txt); } catch { toast("JSON inválido"); return; }
 
     const arr = Array.isArray(obj.data) ? obj.data : [];
-    if (!arr.length) { toast("No hay data[] en el JSON"); return; }
+    if (!arr.length) { toast("No hay datos en el JSON"); return; }
 
     let n = 0;
     for (const it of arr) {
@@ -1005,10 +1005,10 @@
         <div class="row">
           <div>
             <h2>Farmacias · Catálogo</h2>
-            <div class="mini muted">Importa JSON (data[]) o KML. Añade a Mis farmacias desde aquí.</div>
+            <div class="mini muted">Añade a Mis farmacias desde aquí.</div>
           </div>
           <div class="right flex">
-            <button class="btn btn-xs" id="btnImportJsonNew">Importar JSON (data[])</button>
+            <button class="btn btn-xs" id="btnImportJsonNew">Importar JSON</button>
             <button class="btn btn-xs" id="btnImportKml">Importar KML</button>
             <button class="btn-danger btn-xs" id="btnBorrarCatalogo">Borrar catálogo</button>
           </div>
@@ -1285,7 +1285,7 @@
         <div class="row">
           <div>
             <h2>Ópticas · Catálogo</h2>
-            <div class="mini muted">Importa JSON (data[] o lista) y añade a Mis ópticas.</div>
+            <div class="mini muted">Importa JSON y añade a Mis ópticas.</div>
           </div>
           <div class="right flex">
             <button class="btn btn-xs" id="btnImportOpt">Importar JSON</button>
